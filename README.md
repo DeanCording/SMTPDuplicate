@@ -8,7 +8,7 @@ Requires [Net:SMTP:Server](http://search.cpan.org/~macgyver/SMTP-Server-1.1/Serv
 
 Usage:
 
-SMTPDuplicate.pl server1 server2 listen_port
+    SMTPDuplicate.pl server1 server2 listen_port
 
     server1 - first mail server
     server2 - second mail server
