@@ -6,7 +6,13 @@ use Net::SMTP::Server::Client;
 use Net::SMTP;
 use threads;
 
-$server = new Net::SMTP::Server('',9025) ||
+my ($server1, $server2, $port) = @ARGV;
+
+if ((not defined $server1) or (not defined $server2) or (not defined $port)) {
+  die "Usage: SMTPDuplicate server1 server2 listen_port\n";
+}
+
+$server = new Net::SMTP::Server('',$port) ||
   croak("Unable to handle client connection: $!\n");
 
 while(my $conn = $server->accept()) {
@@ -19,7 +25,7 @@ while(my $conn = $server->accept()) {
     # the connecting client completes the SMTP transaction.
     $client->process || croak("Client process failed: $!\n");
     $conn->close; 
-    my $server = new Net::SMTP('mail', Debug => 1);
+    my $server = new Net::SMTP($server1, Debug => 1);
     $server->mail($client->{FROM});
     # Loop through the recipient list.
     foreach $target (@{$client->{TO}}) {
@@ -28,7 +34,7 @@ while(my $conn = $server->accept()) {
     $server->data($client->{MSG});
     $server->quit;
 
-    my $server = new Net::SMTP('localhost', Debug => 1);                                                                        
+    my $server = new Net::SMTP($server2, Debug => 1);                                                                        
     $server->mail($client->{FROM});                                                                                             
     # Loop through the recipient list.                                                                                          
     foreach $target (@{$client->{TO}}) {

@@ -4,3 +4,14 @@ A simple Perl based SMTP proxy that duplicates incoming SMTP messages to two mai
 Note: Rejections from the destination mail servers (address not known, spam) are essentially ignored and not passed back to the sender.
 
 Requires [Net:SMTP:Server](http://search.cpan.org/~macgyver/SMTP-Server-1.1/Server.pm) module
+
+
+Usage:
+
+SMTPDuplicate.pl server1 server2 listen_port
+
+    server1 - first mail server
+    server2 - second mail server
+    listen_port - port to listen for incoming connections
+    
+    
