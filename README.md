@@ -1,2 +1,6 @@
 # SMTPDuplicate
-A simple Perl based SMTP proxy that duplicates incoming SMTP messages to two mail servers.  This allows testing of a new server side by side of a production server.
+A simple Perl based SMTP proxy that duplicates incoming SMTP messages to two mail servers.  This proxy was developed to allow testing of a new server side by side with the current production server using the same message stream.
+
+Note: Rejections from the destination mail servers (address not known, spam) are essentially ignored and not passed back to the sender.
+
+Requires [Net:SMTP:Server](http://search.cpan.org/~macgyver/SMTP-Server-1.1/Server.pm) module
