@@ -3,6 +3,9 @@ A simple Perl based SMTP proxy that duplicates incoming SMTP messages to two mai
 
 Note: Rejections from the destination mail servers (address not known, spam) are essentially ignored and not passed back to the sender.
 
+Warning: This proxy accepts all incoming mail.  In some circumstances it can cause your mail system to operate as an open relay. 
+
+
 Requires [Net:SMTP:Server](http://search.cpan.org/~macgyver/SMTP-Server-1.1/Server.pm) module
 
 
